@@ -9,15 +9,13 @@ namespace game_engine
 	class Engine;
 	class Component;
 
-	
-
 	class Entity
 	{
 	private:
 		std::vector<std::shared_ptr<Component>> components;
 		std::weak_ptr<Engine> engine;
 
-		void Displaty();
+		void Display();
 		void Update();
 	public:
 		std::weak_ptr<Engine> GetEngine();
@@ -32,8 +30,35 @@ namespace game_engine
 			return t;
 		}
 
+		template <typename T, typename A>
+		std::shared_ptr<T> AddComponent(A _a)
+		{
+			std::shared_ptr<T> t = std::make_shared<T>(A _a);
 
-		void Display();
+			components.push_back(t);
+
+			return t;
+		}
+
+		template <typename T, typename A, typename B>
+		std::shared_ptr<T> AddComponent(A _a, B _b)
+		{
+			std::shared_ptr<T> t = std::make_shared<T>(A _a, B _b);
+
+			components.push_back(t);
+
+			return t;
+		}
+
+		template <typename T, typename A, typename B, typename C>
+		std::shared_ptr<T> AddComponent(A _a, B _b, C _c)
+		{
+			std::shared_ptr<T> t = std::make_shared<T>(A _a, B _b, C _c);
+
+			components.push_back(t);
+
+			return t;
+		}
 	};
 }
 #endif // !_ENTITY_H_

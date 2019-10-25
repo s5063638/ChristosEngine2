@@ -5,6 +5,11 @@ include_directories(src)
 
 add_library(game_engine
 	src/game_engine/Engine.cpp
+	src/game_engine/game_engine.h
+	src/game_engine/Engine.h
+	src/game_engine/Component.h
+	src/game_engine/Entity.h
+	src/game_engine/Keybaord.h
 )
 
 add_executable(game

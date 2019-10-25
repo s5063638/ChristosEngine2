@@ -12,7 +12,7 @@ namespace game_engine
 	class Engine
 	{
 		private:
-			std::vector<Entity> entities;
+			std::vector<std::shared_ptr<Entity>> entities;
 			bool isRunning;
 			std::shared_ptr<Keyboard> keyboard;
 		public:

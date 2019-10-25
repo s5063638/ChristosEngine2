@@ -14,10 +14,10 @@ namespace game_engine
 		private:
 			std::weak_ptr<Entity> entity;
 
-			void OnInit();
-			void onBegin();
-			void OnDisplay();
-			void OnUpdate();
+			virtual void OnInit();
+			virtual void OnBegin();
+			virtual void OnDisplay();
+			virtual void OnUpdate();
 		public:
 			std::shared_ptr<Entity> GetEntity();
 			std::shared_ptr<Engine> GetEngine();

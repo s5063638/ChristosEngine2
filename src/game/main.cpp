@@ -1,4 +1,4 @@
-#include <game_engine/Engine.h>
+#include <game_engine/game_engine.h>
 
 #include <memory>
 
@@ -7,13 +7,13 @@ using namespace game_engine;
 int main()
 {
 	//Initialize engine
-	//std::shared_ptr<Engine> engine = Engine::Init();
-	//
-	////Create a single in-game object
-	//std::shared_ptr<Entity> entity = engine->AddEntity();
+	std::shared_ptr<Engine> engine = Engine::Init();
+	
+	//Create a single in-game object
+	std::shared_ptr<Entity> entity = engine->AddEntity();
 
-	////Add a very simple component to it
-
+	//Add a very simple component to it
+	std::shared_ptr<Component> c = entity->AddComponent<Component>();
 
 	////Start the main loop
 	//engine->Start();
