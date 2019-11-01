@@ -14,11 +14,11 @@ namespace game_engine
 	private:
 		std::vector<std::shared_ptr<Component>> components;
 		std::weak_ptr<Engine> engine;
-
+	public:
 		void Display();
 		void Update();
-	public:
-		std::weak_ptr<Engine> GetEngine();
+
+		std::shared_ptr<Engine> GetEngine();
 
 		template <typename T>
 		std::shared_ptr<T> AddComponent()

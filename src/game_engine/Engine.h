@@ -19,7 +19,9 @@ namespace game_engine
 			void Start();
 			void End();
 			std::shared_ptr<Entity> AddEntity();
+			std::shared_ptr<Keyboard> GetKeyboard();
 			static std::shared_ptr<Engine> Init();
+			
 	};
 }
 

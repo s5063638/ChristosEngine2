@@ -5,11 +5,15 @@ include_directories(src)
 
 add_library(game_engine
 	src/game_engine/Engine.cpp
+	src/game_engine/Component.cpp
+	src/game_engine/Entity.cpp
+	src/game_engine/TriangleRenderer.cpp
 	src/game_engine/game_engine.h
 	src/game_engine/Engine.h
 	src/game_engine/Component.h
 	src/game_engine/Entity.h
-	src/game_engine/Keybaord.h
+	src/game_engine/Keyboard.h
+	src/game_engine/TriangleRenderer.h
 )
 
 add_executable(game
