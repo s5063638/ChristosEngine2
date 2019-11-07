@@ -25,7 +25,9 @@ namespace game_engine
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();
 
+			// t->entity = self;
 			components.push_back(t);
+			t->OnInit();
 
 			return t;
 		}
@@ -33,9 +35,10 @@ namespace game_engine
 		template <typename T, typename A>
 		std::shared_ptr<T> AddComponent(A _a)
 		{
-			std::shared_ptr<T> t = std::make_shared<T>(A _a);
+			std::shared_ptr<T> t = std::make_shared<T>();
 
 			components.push_back(t);
+			t->OnInit(_a);
 
 			return t;
 		}
@@ -43,9 +46,10 @@ namespace game_engine
 		template <typename T, typename A, typename B>
 		std::shared_ptr<T> AddComponent(A _a, B _b)
 		{
-			std::shared_ptr<T> t = std::make_shared<T>(A _a, B _b);
+			std::shared_ptr<T> t = std::make_shared<T>();
 
 			components.push_back(t);
+			t->OnInit(_a, _b);
 
 			return t;
 		}
@@ -53,9 +57,10 @@ namespace game_engine
 		template <typename T, typename A, typename B, typename C>
 		std::shared_ptr<T> AddComponent(A _a, B _b, C _c)
 		{
-			std::shared_ptr<T> t = std::make_shared<T>(A _a, B _b, C _c);
+			std::shared_ptr<T> t = std::make_shared<T>();
 
 			components.push_back(t);
+			t->OnInit(_a, _b, _c);
 
 			return t;
 		}

@@ -4,5 +4,6 @@
 #include "Engine.h"
 #include "Entity.h"
 #include "Component.h"
+#include "TriangleRenderer.h"
 
 #endif // !_GAME_ENGINE_H_

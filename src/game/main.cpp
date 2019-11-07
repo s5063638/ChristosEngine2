@@ -13,10 +13,11 @@ int main()
 	std::shared_ptr<Entity> entity = engine->AddEntity();
 
 	//Add a very simple component to it
-	std::shared_ptr<Component> c = entity->AddComponent<Component>();
+	//std::shared_ptr<Component> c = entity->AddComponent<Component>();
+	std::shared_ptr<TriangleRenderer> c = entity->AddComponent<TriangleRenderer>();
 
 	////Start the main loop
-	//engine->Start();
+	engine->Start();
 
 	return 0;
 }

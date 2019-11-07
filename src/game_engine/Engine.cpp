@@ -7,6 +7,8 @@ namespace game_engine
 	{
 		std::shared_ptr<Engine> rtn = std::make_shared<Engine>();
 
+		// Create SDL stuff
+
 		return rtn;
 	}
 
@@ -28,10 +30,18 @@ namespace game_engine
 	{
 		isRunning = true;
 
-		for (auto it = entities.begin(); it != entities.end(); it++)
+		while(isRunning)
 		{
-			(*it)->Update();
-			(*it)->Display();
+			// Do the SDL event loop.. store keyboard keys in Keyboard class.
+			// keyboard->keys.push_back, erase.
+			// mouse
+			// Resize events, screen size, useful for glm::perspective(w/h) glm::ortho
+
+			for (auto it = entities.begin(); it != entities.end(); it++)
+			{
+				(*it)->Update();
+				(*it)->Display();
+			}
 		}
 	}
 }

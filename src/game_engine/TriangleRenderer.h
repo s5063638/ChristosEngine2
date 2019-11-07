@@ -1,25 +1,27 @@
 #ifndef _TRIANGLE_RENDERER_H_
 #define _TRIANGLE_RENDERER_H_
 
-#include <memory>
-#include <SDL2/SDL.h>
-#include <GL/glew.h>
-
-#include <exception>
-
 #include "Component.h"
+
+#include <SDL2/SDL.h>
+#include <rend/rend.h>
+
+#include <memory>
+#include <exception>
 
 namespace game_engine
 {
 	class TriangleRenderer : public Component
 	{
-		private:
-			GLuint positionsVboID;
-			GLuint vaoID;
-			
-			void OnInit();
-			void OnDisplay();
-		public:
+	private:
+		SDL_Window* window;
+		std::shared_ptr<rend::Context> context;
+		std::shared_ptr<rend::Shader> shader;
+		std::shared_ptr<rend::Buffer> shape;
+
+	public:
+		void OnInit();
+		void OnDisplay();
 
 	};
 }
