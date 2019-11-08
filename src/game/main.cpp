@@ -14,7 +14,7 @@ int main()
 
 	//Add a very simple component to it
 	//std::shared_ptr<Component> c = entity->AddComponent<Component>();
-	std::shared_ptr<TriangleRenderer> c = entity->AddComponent<TriangleRenderer>();
+	std::shared_ptr<Renderer> c = entity->AddComponent<Renderer>();
 
 	////Start the main loop
 	engine->Start();

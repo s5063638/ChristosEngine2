@@ -38,4 +38,9 @@ namespace game_engine
 	{
 		return GetEngine()->GetKeyboard();
 	}
+
+	std::shared_ptr<Entity> Component::AddEntity()
+	{
+		GetEngine()->AddEntity();
+	}
 }

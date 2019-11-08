@@ -11,7 +11,7 @@
 
 namespace game_engine
 {
-	class TriangleRenderer : public Component
+	class Renderer : public Component
 	{
 	private:
 		SDL_Window* window;

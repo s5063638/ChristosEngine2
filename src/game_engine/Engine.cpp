@@ -7,7 +7,27 @@ namespace game_engine
 	{
 		std::shared_ptr<Engine> rtn = std::make_shared<Engine>();
 
+		rtn->self = rtn;
+
 		// Create SDL stuff
+		window = SDL_CreateWindow("ChristosEngine2",
+			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+			800, 600,
+			SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+
+		if (!window)
+		{
+			throw rend::Exception("Failed to create window");
+		}
+
+		SDL_GLContext glContext = SDL_GL_CreateContext(window);
+
+		if (!glContext)
+		{
+			throw rend::Exception("Failed to create OpenGL context");
+		}
+
+		context = rend::Context::initialize();
 
 		return rtn;
 	}
@@ -17,6 +37,7 @@ namespace game_engine
 		std::shared_ptr<Entity> newEntity = std::make_shared<Entity>();
 
 		entities.push_back(newEntity);
+		newEntity->engine = self;
 
 		return newEntity;
 	}
@@ -43,5 +64,15 @@ namespace game_engine
 				(*it)->Display();
 			}
 		}
+	}
+
+	SDL_Window* Engine::GetWindow()
+	{
+		return window;
+	}
+
+	std::shared_ptr<rend::Context> Engine::GetContext()
+	{
+		return context;
 	}
 }

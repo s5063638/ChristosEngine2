@@ -1,4 +1,4 @@
-#include "TriangleRenderer.h"
+#include "Renderer.h"
 
 namespace game_engine
 {
@@ -21,36 +21,22 @@ namespace game_engine
 		"" \
 		"\n#endif\n";
 
-	void TriangleRenderer::OnInit()
+	void Renderer::OnInit()
 	{
-		window = SDL_CreateWindow("ChristosEngine2",
-			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-			800, 600,
-			SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+		window = GetEngine()->GetWindow();
+		context = GetEngine()->GetContext();
 
-		if(!window)
-		{
-			throw rend::Exception("Failed to create window");
-		}
-
-		SDL_GLContext glContext = SDL_GL_CreateContext(window);
-
-		if(!glContext)
-		{
-			throw rend::Exception("Failed to create OpenGL context");
-		}
-
-		context = rend::Context::initialize();
 		shader = context->createShader();
 		shader->setSource(src);
 
 		shape = context->createBuffer();
+
 		shape->add(rend::vec2(0, 0.5f));
 		shape->add(rend::vec2(-0.5f, -0.5f));
 		shape->add(rend::vec2(0.5f, -0.5f));
 	}
 
-	void TriangleRenderer::OnDisplay()
+	void Renderer::OnDisplay()
 	{
 		SDL_Event e = {0};
 
@@ -65,7 +51,6 @@ namespace game_engine
 		glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		//shortcuts - getWindow(); getEntity()->getCore()->getWindow();
 		// getTransform()
 		//shader->setAttribute("u_Projection", getEntity()->getCore()->getWindow() / or getCamera()->getProjectionMatrix());
 		//shader->setAttribute("u_Model", getEntity()->getComponent<Transform>()->getModelMatrix());

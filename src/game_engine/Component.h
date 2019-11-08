@@ -2,6 +2,7 @@
 #define _COMPONENT_H_
 
 #include <memory>
+#include "Engine.h"
 
 namespace game_engine
 {
@@ -22,6 +23,7 @@ namespace game_engine
 			std::shared_ptr<Entity> GetEntity();
 			std::shared_ptr<Engine> GetEngine();
 			std::shared_ptr<Keyboard> GetKeyboard();
+			std::shared_ptr<Entity> AddEntity();
 	};
 }
 #endif // !_COMPONENT_H_

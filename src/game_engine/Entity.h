@@ -11,6 +11,7 @@ namespace game_engine
 
 	class Entity
 	{
+	friend Engine;
 	private:
 		std::vector<std::shared_ptr<Component>> components;
 		std::weak_ptr<Engine> engine;
