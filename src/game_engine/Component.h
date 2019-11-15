@@ -13,6 +13,7 @@ namespace game_engine
 	class Component
 	{
 		private:
+			friend class Entity;
 			std::weak_ptr<Entity> entity;
 		public:
 			virtual void OnInit();

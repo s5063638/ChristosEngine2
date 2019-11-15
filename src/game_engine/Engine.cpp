@@ -10,24 +10,24 @@ namespace game_engine
 		rtn->self = rtn;
 
 		// Create SDL stuff
-		window = SDL_CreateWindow("ChristosEngine2",
+		rtn->window = SDL_CreateWindow("ChristosEngine2",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			800, 600,
 			SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 
-		if (!window)
+		if (!rtn->window)
 		{
 			throw rend::Exception("Failed to create window");
 		}
 
-		SDL_GLContext glContext = SDL_GL_CreateContext(window);
+		SDL_GLContext glContext = SDL_GL_CreateContext(rtn->window);
 
 		if (!glContext)
 		{
 			throw rend::Exception("Failed to create OpenGL context");
 		}
 
-		context = rend::Context::initialize();
+		rtn->context = rend::Context::initialize();
 
 		return rtn;
 	}
@@ -38,6 +38,7 @@ namespace game_engine
 
 		entities.push_back(newEntity);
 		newEntity->engine = self;
+		newEntity->self = newEntity;
 
 		return newEntity;
 	}
@@ -57,6 +58,16 @@ namespace game_engine
 			// keyboard->keys.push_back, erase.
 			// mouse
 			// Resize events, screen size, useful for glm::perspective(w/h) glm::ortho
+
+			SDL_Event e = { 0 };
+
+			while (SDL_PollEvent(&e) != 0)
+			{
+				if (e.type == SDL_QUIT)
+				{
+					throw rend::Exception("TODO: Should running = false in engine");
+				}
+			}
 
 			for (auto it = entities.begin(); it != entities.end(); it++)
 			{

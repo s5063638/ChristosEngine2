@@ -11,6 +11,8 @@
 
 namespace game_engine
 {
+	class Mesh;
+
 	class Renderer : public Component
 	{
 	private:
@@ -19,9 +21,14 @@ namespace game_engine
 		std::shared_ptr<rend::Shader> shader;
 		std::shared_ptr<rend::Buffer> shape;
 
+		std::weak_ptr<Mesh> mesh;
+
 	public:
 		void OnInit();
 		void OnDisplay();
+
+		void SetMesh(std::weak_ptr<Mesh> _mesh);
+		std::shared_ptr<Mesh> GetMesh();
 
 	};
 }

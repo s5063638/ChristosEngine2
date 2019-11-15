@@ -41,6 +41,6 @@ namespace game_engine
 
 	std::shared_ptr<Entity> Component::AddEntity()
 	{
-		GetEngine()->AddEntity();
+		return GetEngine()->AddEntity();
 	}
 }

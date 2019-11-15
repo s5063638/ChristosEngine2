@@ -11,10 +11,12 @@ namespace game_engine
 
 	class Entity
 	{
-	friend Engine;
 	private:
+		friend class Engine;
+
 		std::vector<std::shared_ptr<Component>> components;
 		std::weak_ptr<Engine> engine;
+		std::weak_ptr<Entity> self;
 	public:
 		void Display();
 		void Update();
@@ -26,7 +28,7 @@ namespace game_engine
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();
 
-			// t->entity = self;
+			t->entity = self;
 			components.push_back(t);
 			t->OnInit();
 
@@ -38,6 +40,7 @@ namespace game_engine
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();
 
+			t->entity = self;
 			components.push_back(t);
 			t->OnInit(_a);
 
@@ -49,6 +52,7 @@ namespace game_engine
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();
 
+			t->entity = self;
 			components.push_back(t);
 			t->OnInit(_a, _b);
 
@@ -60,6 +64,7 @@ namespace game_engine
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();
 
+			t->entity = self;
 			components.push_back(t);
 			t->OnInit(_a, _b, _c);
 

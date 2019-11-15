@@ -38,16 +38,6 @@ namespace game_engine
 
 	void Renderer::OnDisplay()
 	{
-		SDL_Event e = {0};
-
-		while(SDL_PollEvent(&e) != 0)
-		{
-			if(e.type == SDL_QUIT)
-			{
-				throw rend::Exception("TODO: Should running = false in engine");
-			}
-		}
-
 		glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
