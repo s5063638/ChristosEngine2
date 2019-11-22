@@ -2,23 +2,19 @@
 #define _MESH_H_
 
 #include <rend/rend.h>
+#include "Resource.h"
 
 namespace game_engine
 {
-	class Face;
+	class Engine;
 
-	class Mesh
+	class Mesh : public Resource
 	{
 	private:
-		std::vector<Face> faces;
-		bool dirty;
-
-		//std::shared_ptr<Mesh> Create();
-		std::shared_ptr<Mesh> Load(std::string _path);
+		std::shared_ptr<Mesh> Load(std::string _path, std::shared_ptr<Engine> _engine);
+		std::shared_ptr<rend::Mesh> internalMesh;
 	public:
 		~Mesh();
-		void AddFace(Face &_face);
-		GLuint GetID();
 	};
 }
 

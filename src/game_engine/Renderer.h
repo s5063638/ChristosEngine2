@@ -18,10 +18,10 @@ namespace game_engine
 	private:
 		SDL_Window* window;
 		std::shared_ptr<rend::Context> context;
-		std::shared_ptr<rend::Shader> shader;
-		std::shared_ptr<rend::Buffer> shape;
+		std::shared_ptr<rend::Shader> shader; //will replace with material class
+		std::shared_ptr<Mesh> shape;
 
-		std::weak_ptr<Mesh> mesh;
+		std::shared_ptr<Mesh> mesh;
 
 	public:
 		void OnInit();

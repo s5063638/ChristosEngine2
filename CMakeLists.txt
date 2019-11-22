@@ -10,6 +10,8 @@ add_library(rend
 	src/rend/RenderTexture.cpp
 	src/rend/Shader.cpp
 	src/rend/Buffer.cpp
+  	src/rend/Mesh.cpp
+  	src/rend/Util.cpp
 )
 if(MSVC)
 	target_link_libraries(rend glew32 opengl32)
@@ -24,6 +26,9 @@ add_library(game_engine
 	src/game_engine/Renderer.cpp
 	src/game_engine/Mesh.cpp
 	src/game_engine/Resources.cpp
+	src/game_engine/Resource.cpp
+	src/game_engine/Texture.cpp
+	src/game_engine/Shader.cpp
 	src/game_engine/game_engine.h
 	src/game_engine/Engine.h
 	src/game_engine/Component.h
@@ -32,6 +37,10 @@ add_library(game_engine
 	src/game_engine/Renderer.h
 	src/game_engine/Mesh.h
 	src/game_engine/Resources.h
+	src/game_engine/Resource.h
+	src/game_engine/Texture.h
+	src/game_engine/Shader.h
+	src/game_engine/stb_image.h
 )
 target_link_libraries(game_engine SDL2 rend)
 

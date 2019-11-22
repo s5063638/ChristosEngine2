@@ -1,4 +1,5 @@
 #include "Renderer.h"
+#include "Mesh.h"
 
 namespace game_engine
 {
@@ -29,11 +30,11 @@ namespace game_engine
 		shader = context->createShader();
 		shader->setSource(src);
 
-		shape = context->createBuffer();
+		//shape = context->createBuffer();
 
-		shape->add(rend::vec2(0, 0.5f));
+		/*shape->add(rend::vec2(0, 0.5f));
 		shape->add(rend::vec2(-0.5f, -0.5f));
-		shape->add(rend::vec2(0.5f, -0.5f));
+		shape->add(rend::vec2(0.5f, -0.5f));*/
 	}
 
 	void Renderer::OnDisplay()
@@ -44,7 +45,9 @@ namespace game_engine
 		// getTransform()
 		//shader->setAttribute("u_Projection", getEntity()->getCore()->getWindow() / or getCamera()->getProjectionMatrix());
 		//shader->setAttribute("u_Model", getEntity()->getComponent<Transform>()->getModelMatrix());
-		shader->setAttribute("a_Position", shape);
+		
+		//shader->setMesh(mesh->internal)
+		//shader->setAttribute("a_Position", shape);
 		shader->render();
 
 		SDL_GL_SwapWindow(window);
