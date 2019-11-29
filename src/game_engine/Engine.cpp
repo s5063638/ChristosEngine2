@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "Entity.h"
+#include "Resources.h"
 
 namespace game_engine
 {
@@ -28,6 +29,10 @@ namespace game_engine
 		}
 
 		rtn->context = rend::Context::initialize();
+
+		rtn->resources = std::make_shared<Resources>();
+
+		rtn->resources->engine = rtn;
 
 		return rtn;
 	}
@@ -85,5 +90,10 @@ namespace game_engine
 	std::shared_ptr<rend::Context> Engine::GetContext()
 	{
 		return context;
+	}
+
+	std::shared_ptr<Resources> Engine::GetResources()
+	{
+		return resources;
 	}
 }

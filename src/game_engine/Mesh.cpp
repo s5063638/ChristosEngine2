@@ -5,11 +5,17 @@
 
 namespace game_engine
 {
-	std::shared_ptr<Mesh> Mesh::Load(std::string _path, std::shared_ptr<Engine> _engine)
+	void Mesh::Load(std::string _path)
 	{
-		std::shared_ptr<Mesh> rtn;
+
+		_path += ".obj";
 
 		std::ifstream f(_path);
+
+		if (!f.is_open())
+		{
+			throw rend::Exception("Failed to open model");
+		}
 
 		std::string obj;
 
@@ -21,9 +27,8 @@ namespace game_engine
 			obj += line + "\n";
 		}
 
-		rtn->internalMesh = _engine->GetContext()->createMesh();
-		rtn->internalMesh->parse(obj);
+		internalMesh = engine.lock()->GetContext()->createMesh();
+		internalMesh->parse(obj);
 
-		return rtn;
 	}
 }

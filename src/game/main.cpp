@@ -16,6 +16,9 @@ int main()
 	//std::shared_ptr<Component> c = entity->AddComponent<Component>();
 	std::shared_ptr<Renderer> c = entity->AddComponent<Renderer>();
 
+	std::shared_ptr<Mesh> mesh = engine->GetResources()->Load<Mesh>("../models/Cat");
+	std::shared_ptr<Shader> shader = engine->GetResources()->Load<Shader>("../shaders/Source");
+	
 	////Start the main loop
 	engine->Start();
 

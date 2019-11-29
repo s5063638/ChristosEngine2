@@ -5,11 +5,16 @@
 
 namespace game_engine
 {
-	std::shared_ptr<Shader> Shader::Load(std::string _path, std::shared_ptr<Engine> _engine)
+	void Shader::Load(std::string _path)
 	{
-		std::shared_ptr<Shader> rtn;
+		_path += ".txt";
 
 		std::ifstream f(_path);
+		
+		if (!f.is_open())
+		{
+			throw rend::Exception("Failed to open shader");
+		}
 
 		std::string shdr;
 
@@ -21,9 +26,7 @@ namespace game_engine
 			shdr += line + "\n";
 		}
 
-		rtn->internalShader = _engine->GetContext()->createShader();
-		rtn->internalShader->parse(shdr);
-
-		return rtn;
+		internalShader = engine.lock()->GetContext()->createShader();
+		internalShader->parse(shdr);
 	}
 }

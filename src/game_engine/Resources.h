@@ -12,14 +12,22 @@ namespace game_engine
 	class Resources
 	{
 	private:
+		friend class Engine;
 		std::vector<std::shared_ptr<Resource>> resources;
+		std::weak_ptr<Engine> engine;
 	public:
 		template <typename T>
-		std::shared_ptr<T> Load(std::string _path, std::shared_ptr<Engine> _engine)
+		std::shared_ptr<T> Load(std::string _path)
 		{
+			std::shared_ptr<T> t = std::make_shared<T>();
 
+			resources.push_back(t);
+
+			t->engine = engine;
+			t->Load(_path);
+
+			return t;
 		}
 	};
 }
-
 #endif // !_RESOURCES_H_

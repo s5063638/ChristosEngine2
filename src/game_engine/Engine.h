@@ -10,11 +10,13 @@ namespace game_engine
 {
 	class Entity;
 	class Keyboard;
+	class Resources;
 
 	class Engine
 	{
 		private:
 			std::vector<std::shared_ptr<Entity>> entities;
+			std::shared_ptr<Resources> resources;
 			bool isRunning;
 			std::shared_ptr<Keyboard> keyboard;
 			std::weak_ptr<Engine> self;
@@ -29,6 +31,7 @@ namespace game_engine
 			static std::shared_ptr<Engine> Init();
 			SDL_Window* GetWindow();
 			std::shared_ptr<rend::Context> GetContext();
+			std::shared_ptr<Resources> GetResources();
 			
 	};
 }

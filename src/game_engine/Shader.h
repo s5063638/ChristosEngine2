@@ -10,11 +10,12 @@ namespace game_engine
 {
 	class Engine;
 
-	class Shader : Resource
+	class Shader : public Resource
 	{
 	private:
 		std::shared_ptr<rend::Shader> internalShader;
-		std::shared_ptr<Shader> Load(std::string _path, std::shared_ptr<Engine> _engine);
+	public:
+		void Load(std::string _path);
 	};
 }
 

@@ -30,8 +30,6 @@ namespace game_engine
 		shader = context->createShader();
 		shader->setSource(src);
 
-		//shape = context->createBuffer();
-
 		/*shape->add(rend::vec2(0, 0.5f));
 		shape->add(rend::vec2(-0.5f, -0.5f));
 		shape->add(rend::vec2(0.5f, -0.5f));*/

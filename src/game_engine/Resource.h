@@ -5,10 +5,16 @@
 
 namespace game_engine
 {
+	class Engine;
+	class Resources;
+
 	class Resource
 	{
 	private:
+		friend class Resources;
 		std::string path;
+	protected:
+		std::weak_ptr<Engine> engine;
 	};
 }
 

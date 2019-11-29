@@ -11,10 +11,9 @@ namespace game_engine
 	class Mesh : public Resource
 	{
 	private:
-		std::shared_ptr<Mesh> Load(std::string _path, std::shared_ptr<Engine> _engine);
 		std::shared_ptr<rend::Mesh> internalMesh;
 	public:
-		~Mesh();
+		void Load(std::string _path);
 	};
 }
 
