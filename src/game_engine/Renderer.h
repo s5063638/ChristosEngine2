@@ -12,22 +12,21 @@
 namespace game_engine
 {
 	class Mesh;
+	class Material;
 
 	class Renderer : public Component
 	{
 	private:
 		SDL_Window* window;
 		std::shared_ptr<rend::Context> context;
-		std::shared_ptr<rend::Shader> shader; //will replace with material class
-		std::shared_ptr<Mesh> shape;
-
+		std::shared_ptr<Material> material;
 		std::shared_ptr<Mesh> mesh;
-
 	public:
 		void OnInit();
 		void OnDisplay();
 
-		void SetMesh(std::weak_ptr<Mesh> _mesh);
+		void SetMesh(std::shared_ptr<Mesh> _mesh);
+		void SetMaterial(std::shared_ptr<Material> _mat);
 		std::shared_ptr<Mesh> GetMesh();
 
 	};

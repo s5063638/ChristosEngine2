@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "Mesh.h"
+#include "Material.h"
 
 namespace game_engine
 {
@@ -27,8 +28,7 @@ namespace game_engine
 		window = GetEngine()->GetWindow();
 		context = GetEngine()->GetContext();
 
-		shader = context->createShader();
-		shader->setSource(src);
+		//material = context->createShader();
 
 		/*shape->add(rend::vec2(0, 0.5f));
 		shape->add(rend::vec2(-0.5f, -0.5f));
@@ -46,9 +46,18 @@ namespace game_engine
 		
 		//shader->setMesh(mesh->internal)
 		//shader->setAttribute("a_Position", shape);
-		shader->render();
 
 		SDL_GL_SwapWindow(window);
+	}
+
+	void Renderer::SetMesh(std::shared_ptr<Mesh> _mesh)
+	{
+		mesh = _mesh;
+	}
+
+	void Renderer::SetMaterial(std::shared_ptr<Material> _mat)
+	{
+		material = _mat;
 	}
 }
 

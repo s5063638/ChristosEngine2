@@ -1,6 +1,5 @@
-#ifndef _SHADER_H_
-#define _SHADER_H_
-
+#ifndef _MATERIAL_H_
+#define _MATERIAL_H_
 #include <rend/rend.h>
 #include "Resource.h"
 
@@ -10,7 +9,7 @@ namespace game_engine
 {
 	class Engine;
 
-	class Shader : public Resource
+	class Material : public Resource
 	{
 	private:
 		std::shared_ptr<rend::Shader> internalShader;

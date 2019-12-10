@@ -96,4 +96,9 @@ namespace game_engine
 	{
 		return resources;
 	}
+
+	std::shared_ptr<Camera> Engine::GetCamera()
+	{
+		return camera.lock();
+	}
 }

@@ -28,7 +28,9 @@ add_library(game_engine
 	src/game_engine/Resources.cpp
 	src/game_engine/Resource.cpp
 	src/game_engine/Texture.cpp
-	src/game_engine/Shader.cpp
+	src/game_engine/Material.cpp
+	src/game_engine/Transform.cpp
+	src/game_engine/Camera.cpp
 	src/game_engine/game_engine.h
 	src/game_engine/Engine.h
 	src/game_engine/Component.h
@@ -39,7 +41,9 @@ add_library(game_engine
 	src/game_engine/Resources.h
 	src/game_engine/Resource.h
 	src/game_engine/Texture.h
-	src/game_engine/Shader.h
+	src/game_engine/Material.h
+	src/game_engine/Transform.h
+	src/game_engine/Camera.h
 	src/game_engine/stb_image.h
 )
 target_link_libraries(game_engine SDL2 rend)

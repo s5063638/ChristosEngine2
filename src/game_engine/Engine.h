@@ -11,6 +11,7 @@ namespace game_engine
 	class Entity;
 	class Keyboard;
 	class Resources;
+	class Camera;
 
 	class Engine
 	{
@@ -20,6 +21,8 @@ namespace game_engine
 			bool isRunning;
 			std::shared_ptr<Keyboard> keyboard;
 			std::weak_ptr<Engine> self;
+
+			std::weak_ptr<Camera> camera;
 
 			SDL_Window* window;
 			std::shared_ptr<rend::Context> context;
@@ -32,6 +35,7 @@ namespace game_engine
 			SDL_Window* GetWindow();
 			std::shared_ptr<rend::Context> GetContext();
 			std::shared_ptr<Resources> GetResources();
+			std::shared_ptr<Camera> GetCamera();
 			
 	};
 }

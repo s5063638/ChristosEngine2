@@ -1,11 +1,11 @@
-#include "Shader.h"
+#include "Material.h"
 #include "Engine.h"
 
 #include <fstream>
 
 namespace game_engine
 {
-	void Shader::Load(std::string _path)
+	void Material::Load(std::string _path)
 	{
 		_path += ".txt";
 

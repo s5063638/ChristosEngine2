@@ -8,6 +8,8 @@
 #include "Resource.h"
 #include "Resources.h"
 #include "Mesh.h"
-#include "Shader.h"
+#include "Material.h"
+#include "Transform.h"
+#include "Camera.h"
 
 #endif // !_GAME_ENGINE_H_

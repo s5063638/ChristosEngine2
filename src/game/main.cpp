@@ -13,11 +13,18 @@ int main()
 	std::shared_ptr<Entity> entity = engine->AddEntity();
 
 	//Add a very simple component to it
-	//std::shared_ptr<Component> c = entity->AddComponent<Component>();
-	std::shared_ptr<Renderer> c = entity->AddComponent<Renderer>();
+	std::shared_ptr<Renderer> renderer = entity->AddComponent<Renderer>();
 
 	std::shared_ptr<Mesh> mesh = engine->GetResources()->Load<Mesh>("../models/Cat");
-	std::shared_ptr<Shader> shader = engine->GetResources()->Load<Shader>("../shaders/Source");
+	
+	renderer->SetMesh(mesh);
+
+	std::shared_ptr<Material> material = engine->GetResources()->Load<Material>("../shaders/Source");
+
+	renderer->SetMaterial(material);
+
+	std::shared_ptr<Entity> camEntity = engine->AddEntity();
+	std::shared_ptr<Camera> camera = camEntity->AddComponent<Camera>();
 	
 	////Start the main loop
 	engine->Start();
