@@ -17,6 +17,7 @@ namespace game_engine
 		rend::vec3 scale;
 	public:
 		rend::mat4 GetModel();
+		void OnInit();
 		void SetPosition(rend::vec3 _pos);
 		void SetRotation(rend::vec3 _rot);
 		void SetScale(rend::vec3 _scale);

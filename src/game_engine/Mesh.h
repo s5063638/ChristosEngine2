@@ -7,10 +7,12 @@
 namespace game_engine
 {
 	class Engine;
+	class Renderer;
 
 	class Mesh : public Resource
 	{
 	private:
+		friend class Renderer;
 		std::shared_ptr<rend::Mesh> internalMesh;
 	public:
 		void Load(std::string _path);

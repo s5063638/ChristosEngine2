@@ -15,11 +15,14 @@ int main()
 	//Add a very simple component to it
 	std::shared_ptr<Renderer> renderer = entity->AddComponent<Renderer>();
 
+	//do get transform in entity
+	entity->GetComponent<Transform>()->SetPosition(rend::vec3(0, 0, -10));
+
 	std::shared_ptr<Mesh> mesh = engine->GetResources()->Load<Mesh>("../models/Cat");
 	
 	renderer->SetMesh(mesh);
 
-	std::shared_ptr<Material> material = engine->GetResources()->Load<Material>("../shaders/Source");
+	std::shared_ptr<Material> material = engine->GetResources()->Load<Material>("../shaders/ModelShader");
 
 	renderer->SetMaterial(material);
 

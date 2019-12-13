@@ -1,53 +1,27 @@
 #include "Renderer.h"
 #include "Mesh.h"
 #include "Material.h"
+#include "Entity.h"
+#include "Camera.h"
+#include "Transform.h"
 
 namespace game_engine
 {
-	const char* src =
-		"\n#ifdef VERTEX\n" \
-		"attribute vec2 a_Position;" \
-		"" \
-		"void main()" \
-		"{" \
-		"  gl_Position = vec4(a_Position, 0, 1);" \
-		"}" \
-		"" \
-		"\n#endif\n" \
-		"\n#ifdef FRAGMENT\n" \
-		"" \
-		"void main()" \
-		"{" \
-		"  gl_FragColor = vec4(1, 0, 0, 1);" \
-		"}" \
-		"" \
-		"\n#endif\n";
-
 	void Renderer::OnInit()
 	{
 		window = GetEngine()->GetWindow();
 		context = GetEngine()->GetContext();
-
-		//material = context->createShader();
-
-		/*shape->add(rend::vec2(0, 0.5f));
-		shape->add(rend::vec2(-0.5f, -0.5f));
-		shape->add(rend::vec2(0.5f, -0.5f));*/
 	}
 
 	void Renderer::OnDisplay()
 	{
-		glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		material->internalShader->setMesh(mesh->internalMesh);
 
-		// getTransform()
-		//shader->setAttribute("u_Projection", getEntity()->getCore()->getWindow() / or getCamera()->getProjectionMatrix());
-		//shader->setAttribute("u_Model", getEntity()->getComponent<Transform>()->getModelMatrix());
-		
-		//shader->setMesh(mesh->internal)
-		//shader->setAttribute("a_Position", shape);
+		material->internalShader->setUniform("u_Projection", GetEngine()->GetCamera()->GetProjection());
+		material->internalShader->setUniform("u_Model", GetEntity()->GetComponent<Transform>()->GetModel());
+		material->internalShader->setUniform("u_View", GetEngine()->GetCamera()->GetView());
 
-		SDL_GL_SwapWindow(window);
+		material->internalShader->render();
 	}
 
 	void Renderer::SetMesh(std::shared_ptr<Mesh> _mesh)

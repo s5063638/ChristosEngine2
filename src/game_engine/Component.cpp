@@ -1,6 +1,7 @@
 #include "Component.h"
 #include "Entity.h"
 #include "Engine.h"
+#include "Transform.h"
 
 namespace game_engine
 {
@@ -42,5 +43,10 @@ namespace game_engine
 	std::shared_ptr<Entity> Component::AddEntity()
 	{
 		return GetEngine()->AddEntity();
+	}
+
+	std::shared_ptr<Transform> Component::GetTransform()
+	{
+		return GetEntity()->GetComponent<Transform>();
 	}
 }

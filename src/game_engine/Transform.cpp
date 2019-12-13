@@ -2,9 +2,25 @@
 
 namespace game_engine
 {
+	void Transform::OnInit()
+	{
+		position = rend::vec3(0, 0, 0);
+		rotation = rend::vec3(0, 0, 0);
+		scale = rend::vec3(1, 1, 1);
+	}
 	rend::mat4 Transform::GetModel()
 	{
+		rend::mat4 rtn = rend::mat4(1.0f);
 
+		rtn = rend::translate(rtn, position);
+
+		rtn = rend::rotate(rtn, rotation.x, rend::vec3(1, 0, 0));
+		rtn = rend::rotate(rtn, rotation.y, rend::vec3(0, 1, 0));
+		rtn = rend::rotate(rtn, rotation.z, rend::vec3(0, 0, 1));
+
+		rtn = rend::scale(rtn, scale);
+
+		return rtn;
 	}
 	void Transform::SetPosition(rend::vec3 _pos)
 	{

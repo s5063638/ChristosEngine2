@@ -10,6 +10,7 @@ namespace game_engine
 	class Camera : public Component
 	{
 	public:
+		void OnInit();
 		rend::mat4 GetProjection();
 		rend::mat4 GetView();
 	};

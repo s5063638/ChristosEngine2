@@ -9,6 +9,7 @@ namespace game_engine
 	class Entity;
 	class Engine;
 	class Keyboard;
+	class Transform;
 
 	class Component
 	{
@@ -25,6 +26,7 @@ namespace game_engine
 			std::shared_ptr<Engine> GetEngine();
 			std::shared_ptr<Keyboard> GetKeyboard();
 			std::shared_ptr<Entity> AddEntity();
+			std::shared_ptr<Transform> GetTransform();
 	};
 }
 #endif // !_COMPONENT_H_

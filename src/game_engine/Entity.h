@@ -24,6 +24,19 @@ namespace game_engine
 		std::shared_ptr<Engine> GetEngine();
 
 		template <typename T>
+		std::shared_ptr<T> GetComponent()
+		{
+			for (auto it = components.begin(); it != components.end(); it++) 
+			{
+				std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>(*it);
+				if (*it)
+				{
+					return rtn;
+				}
+			}
+		}
+
+		template <typename T>
 		std::shared_ptr<T> AddComponent()
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();

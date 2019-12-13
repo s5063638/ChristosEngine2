@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "Entity.h"
 #include "Resources.h"
+#include "Transform.h"
 
 namespace game_engine
 {
@@ -45,6 +46,8 @@ namespace game_engine
 		newEntity->engine = self;
 		newEntity->self = newEntity;
 
+		newEntity->AddComponent<Transform>();
+
 		return newEntity;
 	}
 
@@ -74,11 +77,16 @@ namespace game_engine
 				}
 			}
 
+			glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 			for (auto it = entities.begin(); it != entities.end(); it++)
 			{
 				(*it)->Update();
 				(*it)->Display();
 			}
+
+			SDL_GL_SwapWindow(window);
 		}
 	}
 

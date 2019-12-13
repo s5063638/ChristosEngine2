@@ -16,6 +16,7 @@ namespace game_engine
 	class Engine
 	{
 		private:
+			friend class Camera;
 			std::vector<std::shared_ptr<Entity>> entities;
 			std::shared_ptr<Resources> resources;
 			bool isRunning;
