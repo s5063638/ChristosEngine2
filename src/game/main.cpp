@@ -27,8 +27,12 @@ int main()
 	renderer->SetMaterial(material);
 
 	std::shared_ptr<Entity> camEntity = engine->AddEntity();
+
 	std::shared_ptr<Camera> camera = camEntity->AddComponent<Camera>();
+	engine->SetCam(camera);
 	
+	//camera->GetTransform()->SetPosition(rend::vec3(1.0f, 2.0f, 0.0f));
+
 	////Start the main loop
 	engine->Start();
 

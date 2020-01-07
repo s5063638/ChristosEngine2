@@ -23,6 +23,7 @@ add_library(game_engine
 	src/game_engine/Engine.cpp
 	src/game_engine/Component.cpp
 	src/game_engine/Entity.cpp
+	src/game_engine/Keyboard.cpp
 	src/game_engine/Renderer.cpp
 	src/game_engine/Mesh.cpp
 	src/game_engine/Resources.cpp

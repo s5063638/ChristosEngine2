@@ -6,7 +6,7 @@ namespace game_engine
 {
 	void Camera::OnInit()
 	{
-		GetEngine()->camera = GetEntity()->GetComponent<Camera>();
+		//GetEngine()->camera = GetEntity()->GetComponent<Camera>();
 	}
 	rend::mat4 Camera::GetProjection()
 	{

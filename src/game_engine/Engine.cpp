@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "Resources.h"
 #include "Transform.h"
+#include "Keyboard.h"
 
 namespace game_engine
 {
@@ -35,6 +36,8 @@ namespace game_engine
 
 		rtn->resources->engine = rtn;
 
+		rtn->keyboard = std::make_shared<Keyboard>();
+
 		return rtn;
 	}
 
@@ -66,14 +69,17 @@ namespace game_engine
 			// keyboard->keys.push_back, erase.
 			// mouse
 			// Resize events, screen size, useful for glm::perspective(w/h) glm::ortho
+			SDL_Event e;
 
-			SDL_Event e = { 0 };
-
-			while (SDL_PollEvent(&e) != 0)
+			while (SDL_PollEvent(&e))
 			{
 				if (e.type == SDL_QUIT)
 				{
 					throw rend::Exception("TODO: Should running = false in engine");
+				}
+				if(e.type == SDL_KEYDOWN)
+				{
+					keyboard->AddKey(e.key.keysym.sym);
 				}
 			}
 
@@ -107,6 +113,11 @@ namespace game_engine
 
 	std::shared_ptr<Camera> Engine::GetCamera()
 	{
-		return camera.lock();
+		return camera;
+	}
+
+	void Engine::SetCam(std::shared_ptr<Camera> _cam)
+	{
+		camera = _cam;
 	}
 }
