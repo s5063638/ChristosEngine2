@@ -81,6 +81,10 @@ namespace game_engine
 				{
 					keyboard->AddKey(e.key.keysym.sym);
 				}
+				if (e.type == SDL_KEYUP)
+				{
+					keyboard->RemoveKey(e.key.keysym.sym);
+				}
 			}
 
 			glClearColor(0.39f, 0.58f, 0.93f, 1.0f);

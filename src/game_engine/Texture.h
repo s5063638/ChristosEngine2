@@ -7,13 +7,15 @@
 namespace game_engine
 {
 	class Engine;
+	class Renderer;
 
 	class Texture : public Resource
 	{
-	public:
-		std::shared_ptr<rend::Texture> internalTexture;
 	private:
-		std::shared_ptr<Texture> Load(std::string _path, std::shared_ptr<Engine> _engine);
+		friend class Renderer;
+		std::shared_ptr<rend::Texture> internalTexture;
+	public:
+		void Load(std::string _path);
 	};
 }
 

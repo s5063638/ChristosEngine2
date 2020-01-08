@@ -9,9 +9,9 @@
 
 namespace game_engine
 {
-	std::shared_ptr<Texture> Texture::Load(std::string _path, std::shared_ptr<Engine> _engine)
+	void Texture::Load(std::string _path)
 	{
-		std::shared_ptr<Texture> rtn;
+		_path += ".png";
 
 		int w = 0;
 		int h = 0;
@@ -24,7 +24,7 @@ namespace game_engine
 			throw rend::Exception("Failed to open image");
 		}
 
-		rtn->internalTexture->setSize(w, h);
+		internalTexture->setSize(w, h);
 
 		for (int y = 0; y < h; y++)
 		{
@@ -33,7 +33,7 @@ namespace game_engine
 			{
 				int r = y * w * 3 + x * 3;
 
-				rtn->internalTexture->setPixel(x, y, rend::vec3(
+				internalTexture->setPixel(x, y, rend::vec3(
 					data[r] / 255.0f,
 					data[r + 1] / 255.0f,
 					data[r + 2] / 255.0f));
@@ -41,7 +41,5 @@ namespace game_engine
 		}
 
 		stbi_image_free(data);
-
-		return rtn;
 	}
 }

@@ -34,4 +34,12 @@ namespace game_engine
 	{
 		scale = _scale;
 	}
+	void Transform::Translate(rend::vec3 _pos)
+	{
+		position += _pos;
+	}
+	void Transform::Rotate(rend::vec3 _rot)
+	{
+		rotation += _rot;
+	}
 }

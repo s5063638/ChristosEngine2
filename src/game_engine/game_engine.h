@@ -11,5 +11,7 @@
 #include "Material.h"
 #include "Transform.h"
 #include "Camera.h"
+#include "Texture.h"
+#include "Keyboard.h"
 
 #endif // !_GAME_ENGINE_H_

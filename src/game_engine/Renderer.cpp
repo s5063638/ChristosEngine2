@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "Camera.h"
 #include "Transform.h"
+#include "Texture.h"
 
 namespace game_engine
 {
@@ -16,6 +17,10 @@ namespace game_engine
 	void Renderer::OnDisplay()
 	{
 		material->internalShader->setMesh(mesh->internalMesh);
+		if (texture != NULL)
+		{
+			mesh->internalMesh->setTexture("u_Texture", texture->internalTexture);
+		}
 
 		material->internalShader->setUniform("u_Projection", GetEngine()->GetCamera()->GetProjection());
 		material->internalShader->setUniform("u_Model", GetEntity()->GetComponent<Transform>()->GetModel());
@@ -32,6 +37,16 @@ namespace game_engine
 	void Renderer::SetMaterial(std::shared_ptr<Material> _mat)
 	{
 		material = _mat;
+	}
+
+	void Renderer::SetTexture(std::shared_ptr<Texture> _texture)
+	{
+		texture = _texture;
+	}
+
+	std::shared_ptr<Mesh> Renderer::GetMesh()
+	{
+		return mesh;
 	}
 }
 
