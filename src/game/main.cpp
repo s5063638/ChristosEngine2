@@ -85,7 +85,7 @@ int main()
 	//Add House
 	std::shared_ptr<Entity> graveyard = engine->AddEntity();
 
-	std::shared_ptr<Renderer> graveyardRenderer = cat1->AddComponent<Renderer>();
+	std::shared_ptr<Renderer> graveyardRenderer = graveyard->AddComponent<Renderer>();
 
 	std::shared_ptr<Mesh> graveyardMesh = engine->GetResources()->Load<Mesh>("../models/graveyard");
 	graveyardRenderer->SetMesh(graveyardMesh);
@@ -95,7 +95,7 @@ int main()
 
 	graveyard->GetComponent<Transform>()->SetPosition(rend::vec3(0.0f, 0.0f, 0.0f));
 	graveyard->GetComponent<Transform>()->SetRotation(rend::vec3(0.0f, 0.0f, 0.0f));
-	graveyard->GetComponent<Transform>()->SetScale(rend::vec3(30.0f, 30.0f, 30.0f));
+	graveyard->GetComponent<Transform>()->SetScale(rend::vec3(2.0f, 2.0f, 2.0f));
 
 	//Camera Setup
 	std::shared_ptr<Entity> camEntity = engine->AddEntity();
