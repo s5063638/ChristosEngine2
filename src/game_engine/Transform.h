@@ -21,8 +21,12 @@ namespace game_engine
 		void SetPosition(rend::vec3 _pos);
 		void SetRotation(rend::vec3 _rot);
 		void SetScale(rend::vec3 _scale);
+
+		rend::vec3 GetPosition();
+		rend::vec3 GetRotation();
+		rend::vec3 GetScale();;
 		
-		void Translate(rend::vec3 _pos);
+		void Translate(rend::vec4 _pos);
 		void Rotate(rend::vec3 _rot);
 
 	};

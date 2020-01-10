@@ -34,9 +34,24 @@ namespace game_engine
 	{
 		scale = _scale;
 	}
-	void Transform::Translate(rend::vec3 _pos)
+	rend::vec3 Transform::GetPosition()
 	{
-		position += _pos;
+		return position;
+	}
+	rend::vec3 Transform::GetRotation()
+	{
+		return rotation;
+	}
+	rend::vec3 Transform::GetScale()
+	{
+		return scale;
+	}
+	void Transform::Translate(rend::vec4 _pos)
+	{
+		rend::mat4 modMat = GetModel();
+		rend::vec4 movement = modMat * _pos;
+
+		position += rend::vec3(movement.x, movement.y, movement.z);
 	}
 	void Transform::Rotate(rend::vec3 _rot)
 	{

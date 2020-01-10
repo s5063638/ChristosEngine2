@@ -3,6 +3,7 @@
 #include "Resources.h"
 #include "Transform.h"
 #include "Keyboard.h"
+#include "Camera.h"
 
 namespace game_engine
 {

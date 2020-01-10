@@ -24,6 +24,7 @@ namespace game_engine
 			throw rend::Exception("Failed to open image");
 		}
 
+		internalTexture = engine.lock()->GetContext()->createTexture();
 		internalTexture->setSize(w, h);
 
 		for (int y = 0; y < h; y++)
