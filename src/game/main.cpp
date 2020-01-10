@@ -12,39 +12,38 @@ struct PlayerControl : public Component
 	{
 		if (GetKeyboard()->GetKeyDown(SDLK_w))
 		{
-			camera->GetTransform()->Translate(rend::vec4(0.0f, 0.0f, -0.1f, 0.0f));
+			camera->GetTransform()->Translate(rend::vec4(0.0f, 0.0f, -0.25f, 0.0f));
 		}
 		if (GetKeyboard()->GetKeyDown(SDLK_s))
 		{
-			camera->GetTransform()->Translate(rend::vec4(0.0f, 0.0f, 0.1f, 0.0f));
+			camera->GetTransform()->Translate(rend::vec4(0.0f, 0.0f, 0.25f, 0.0f));
 		}
 		if (GetKeyboard()->GetKeyDown(SDLK_a))
 		{
-			camera->GetTransform()->Translate(rend::vec4(-0.1f, 0.0f, 0.0f, 0.0f));
+			camera->GetTransform()->Translate(rend::vec4(-0.25f, 0.0f, 0.0f, 0.0f));
 		}
 		if (GetKeyboard()->GetKeyDown(SDLK_d))
 		{
-			camera->GetTransform()->Translate(rend::vec4(0.1f, 0.0f, 0.0f, 0.0f));
+			camera->GetTransform()->Translate(rend::vec4(0.25f, 0.0f, 0.0f, 0.0f));
 		}
 		if (GetKeyboard()->GetKeyDown(SDLK_LEFT))
 		{
-			camera->GetTransform()->Rotate(rend::vec3(0.0f, 0.01f, 0.0f));
+			camera->GetTransform()->Rotate(rend::vec3(0.0f, 0.02f, 0.0f));
 		}
 		if (GetKeyboard()->GetKeyDown(SDLK_RIGHT))
 		{
-			camera->GetTransform()->Rotate(rend::vec3(0.0f, -0.01f, 0.0f));
+			camera->GetTransform()->Rotate(rend::vec3(0.0f, -0.02f, 0.0f));
 		}
 		if (GetKeyboard()->GetKeyDown(SDLK_UP))
 		{
-			camera->GetTransform()->Rotate(rend::vec3(0.01f, 0.0f, 0.0f));
+			camera->GetTransform()->Translate(rend::vec4(0.0f, 0.2f, 0.0f, 0.0f));
 		}
 		if (GetKeyboard()->GetKeyDown(SDLK_DOWN))
 		{
-			camera->GetTransform()->Rotate(rend::vec3(-0.01f, 0.0f, 0.0f));
+			camera->GetTransform()->Translate(rend::vec4(0.0f, -0.2f, 0.0f, 0.0f));
 		}
 	}
 };
-
 
 int main()
 {
@@ -93,7 +92,7 @@ int main()
 	std::shared_ptr<Texture> graveyardTexture = engine->GetResources()->Load<Texture>("../textures/graveyard");
 	graveyardRenderer->SetTexture(graveyardTexture);
 
-	graveyard->GetComponent<Transform>()->SetPosition(rend::vec3(0.0f, 0.0f, 0.0f));
+	graveyard->GetComponent<Transform>()->SetPosition(rend::vec3(0.0f, -2.5f, -1.0f));
 	graveyard->GetComponent<Transform>()->SetRotation(rend::vec3(0.0f, 0.0f, 0.0f));
 	graveyard->GetComponent<Transform>()->SetScale(rend::vec3(2.0f, 2.0f, 2.0f));
 
