@@ -15,6 +15,7 @@ namespace game_engine
 		friend class Renderer;
 		std::shared_ptr<rend::Texture> internalTexture;
 	public:
+		///Method used to load a .png texture
 		void Load(std::string _path);
 	};
 }

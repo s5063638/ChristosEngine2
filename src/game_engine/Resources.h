@@ -17,6 +17,7 @@ namespace game_engine
 		std::weak_ptr<Engine> engine;
 	public:
 		template <typename T>
+		///Method that loads the specified Resource
 		std::shared_ptr<T> Load(std::string _path)
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();

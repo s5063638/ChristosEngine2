@@ -28,17 +28,17 @@ namespace game_engine
 			SDL_Window* window;
 			std::shared_ptr<rend::Context> context;
 		public:
-			void Start();
-			void End();
-			void SetCam(std::shared_ptr<Camera> _cam);
+			void Start(); /*!< A method used to start and run the main game loop*/
+			void End(); 
+			void SetCam(std::shared_ptr<Camera> _cam); /*!< A method used to set the Main Camera for the game*/
 
-			std::shared_ptr<Entity> AddEntity();
-			std::shared_ptr<Keyboard> GetKeyboard();
-			static std::shared_ptr<Engine> Init();
-			SDL_Window* GetWindow();
-			std::shared_ptr<rend::Context> GetContext();
-			std::shared_ptr<Resources> GetResources();
-			std::shared_ptr<Camera> GetCamera();
+			std::shared_ptr<Entity> AddEntity(); /*!< A method used to add an Entity to the game. Returns the Entity that has been added*/
+			std::shared_ptr<Keyboard> GetKeyboard(); /*!< A method that returns the Keyboard for managing input*/
+			static std::shared_ptr<Engine> Init(); /*!< A method used to initialise the Engine. Returns the initialised Engine. Should be the first thing done inside main.cpp*/
+			SDL_Window* GetWindow(); /*!< Returns the window*/
+			std::shared_ptr<rend::Context> GetContext(); /*!<Returns the drawing context */
+			std::shared_ptr<Resources> GetResources(); /*!< Returns the engine's resources*/
+			std::shared_ptr<Camera> GetCamera(); /*!< Returns the engine's main camera*/
 	};
 }
 

@@ -16,6 +16,7 @@ namespace game_engine
 		friend class Renderer;
 		std::shared_ptr<rend::Shader> internalShader;
 	public:
+		///Method used to load a .txt shader file into the material
 		void Load(std::string _path);
 	};
 }

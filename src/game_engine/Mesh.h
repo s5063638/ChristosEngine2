@@ -15,6 +15,7 @@ namespace game_engine
 		friend class Renderer;
 		std::shared_ptr<rend::Mesh> internalMesh;
 	public:
+		///Method used to load a .obj file into the mesh
 		void Load(std::string _path);
 	};
 }

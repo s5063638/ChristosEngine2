@@ -18,13 +18,14 @@ namespace game_engine
 		std::weak_ptr<Engine> engine;
 		std::weak_ptr<Entity> self;
 	public:
-		void Display();
-		void Update();
+		void Display(); /*!< Method that runs OnDisplay on all Components attached to the current Entity*/
+		void Update(); /*!< Method that runs OnDisplay on all Components attached to the current Entity*/
 
-		std::shared_ptr<Engine> GetEngine();
+		std::shared_ptr<Engine> GetEngine(); /*!< Shortcut that returns the Engine*/
 
+		///Method that returns a specified Component from the current Entity
 		template <typename T>
-		std::shared_ptr<T> GetComponent()
+		std::shared_ptr<T> GetComponent() 
 		{
 			for (auto it = components.begin(); it != components.end(); it++) 
 			{
@@ -37,7 +38,8 @@ namespace game_engine
 		}
 
 		template <typename T>
-		std::shared_ptr<T> AddComponent()
+		///Adds a specified Component to the current Entity
+		std::shared_ptr<T> AddComponent() 
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();
 
@@ -47,9 +49,10 @@ namespace game_engine
 
 			return t;
 		}
-
+		
 		template <typename T, typename A>
-		std::shared_ptr<T> AddComponent(A _a)
+		///Adds a specified Component to the current Entity with one specified argument
+		std::shared_ptr<T> AddComponent(A _a) 
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();
 
@@ -61,7 +64,8 @@ namespace game_engine
 		}
 
 		template <typename T, typename A, typename B>
-		std::shared_ptr<T> AddComponent(A _a, B _b)
+		///Adds a specified Component to the current Entity with two specified arguments
+		std::shared_ptr<T> AddComponent(A _a, B _b) 
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();
 
@@ -73,7 +77,8 @@ namespace game_engine
 		}
 
 		template <typename T, typename A, typename B, typename C>
-		std::shared_ptr<T> AddComponent(A _a, B _b, C _c)
+		///Adds a specified Component to the current Entity with three specified arguments
+		std::shared_ptr<T> AddComponent(A _a, B _b, C _c) 
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();
 

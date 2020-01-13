@@ -10,9 +10,9 @@ namespace game_engine
 	class Camera : public Component
 	{
 	public:
-		void OnInit();
-		rend::mat4 GetProjection();
-		rend::mat4 GetView();
+		void OnInit(); 
+		rend::mat4 GetProjection(); /*!< Returns the projection matrix of the Camera*/
+		rend::mat4 GetView(); /*!< Returns the viewing matrix of the Camera*/
 	};
 }
 #endif // !_CAMERA_H_
