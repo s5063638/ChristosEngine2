@@ -24,6 +24,13 @@ namespace game_engine
 		std::shared_ptr<Engine> GetEngine(); /*!< Shortcut that returns the Engine*/
 
 		///Method that returns a specified Component from the current Entity
+		//! \brief
+		//! ```
+		//!    std::shared_ptr<Entity> ent = engine->AddEntity();
+		//!
+		//!    ent->GetComponent<Transform>()->SetPosition(rend::vec3(1.5f, 0.0f, -10.0f));
+		//! ```
+		//! *An example of using GetComponent() to set the position of an entity*
 		template <typename T>
 		std::shared_ptr<T> GetComponent() 
 		{
@@ -39,6 +46,13 @@ namespace game_engine
 
 		template <typename T>
 		///Adds a specified Component to the current Entity
+		//! \brief
+		//! ```
+		//!    std::shared_ptr<Entity> ent = engine->AddEntity();
+		//!
+		//!    std::shared_ptr<Renderer> renderer = ent->AddComponent<Renderer>();
+		//! ```
+		//! *An example of using AddComponent() to add a Renderer component to an entity*
 		std::shared_ptr<T> AddComponent() 
 		{
 			std::shared_ptr<T> t = std::make_shared<T>();

@@ -22,30 +22,85 @@ namespace game_engine
 
 		return rtn;
 	}
+
+	//! \brief
+	//! ```
+	//!    entity->GetComponent<Transform>()->SetPosition(rend::vec3(-1.5f, 0.0f, -10.0f));
+	//! ```
+	//! *An example of setting the position of an entity*
 	void Transform::SetPosition(rend::vec3 _pos)
 	{
 		position = _pos;
 	}
+
+	//! \brief
+	//! ```
+	//!    entity->GetComponent<Transform>()->SetRotation(rend::vec3(0.0f, -4.5f, 0.0f));
+	//! ```
+	//! *An example of setting the rotation of an entity*
 	void Transform::SetRotation(rend::vec3 _rot)
 	{
 		rotation = _rot;
 	}
+
+	//! \brief
+	//! ```
+	//!    entity->GetComponent<Transform>()->SetScale(rend::vec3(2.0f, 2.0f, 2.0f));
+	//! ```
+	//! *An example of setting the scale of an entity*
 	void Transform::SetScale(rend::vec3 _scale)
 	{
 		scale = _scale;
 	}
+
+	//! \brief
+	//! ```
+	//!    if(entity->GetComponent<Transform>()->GetTransform()->GetPosition().x > 0.0f);
+	//!    {
+	//!
+	//!    }
+	//! ```
+	//! *An example of how to get the position of an entity and check it*
 	rend::vec3 Transform::GetPosition()
 	{
 		return position;
 	}
+
+	//! \brief
+	//! ```
+	//!    if(entity->GetComponent<Transform>()->GetTransform()->GetRotation().y < 5.0f);
+	//!    {
+	//!
+	//!    }
+	//! ```
+	//! *An example of how to get the rotation of an entity and check it*
 	rend::vec3 Transform::GetRotation()
 	{
 		return rotation;
 	}
+
+	//! \brief
+	//! ```
+	//!    if(entity->GetComponent<Transform>()->GetTransform()->GetScale().x <= 2.0f);
+	//!    {
+	//!
+	//!    }
+	//! ```
+	//! *An example of how to get the scale of an entity and check it*
 	rend::vec3 Transform::GetScale()
 	{
 		return scale;
 	}
+
+	//! \brief
+	//! ```
+	//!    //THIS
+	//!    entity->GetComponent<Transform>()->Translate(rend::vec4(0.0f, -0.2f, 0.0f, 0.0f));
+	//!
+	//!    //OR
+	//!    camera->GetTransform()->Translate(rend::vec4(0.0f, 0.0f, 0.25f, 0.0f));
+	//! ```
+	//! *Examples of how to translate an entity*
 	void Transform::Translate(rend::vec4 _pos)
 	{
 		rend::mat4 modMat = GetModel();
@@ -53,6 +108,16 @@ namespace game_engine
 
 		position += rend::vec3(movement.x, movement.y, movement.z);
 	}
+
+	//! \brief
+	//! ```
+	//!    //THIS
+	//!    entity->GetComponent<Transform>()->Rotate(rend::vec4(0.0f, -0.2f, 0.0f, 0.0f));
+	//!
+	//!    //OR
+	//!    camera->GetTransform()->Rotate(rend::vec4(0.0f, 0.2f, 0.0f, 0.0f));
+	//! ```
+	//! *Examples of how to rotate an entity*
 	void Transform::Rotate(rend::vec3 _rot)
 	{
 		rotation += _rot;

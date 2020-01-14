@@ -5,6 +5,11 @@
 
 namespace game_engine
 {
+	//! \brief
+	//! ```
+	//!    std::shared_ptr<Mesh> entMesh = engine->GetResources()->Load<Mesh>("../models/Mesh");
+	//! ```
+	//! *An example of loading a mesh*
 	void Mesh::Load(std::string _path)
 	{
 

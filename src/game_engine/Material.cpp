@@ -5,6 +5,11 @@
 
 namespace game_engine
 {
+	//! \brief
+	//! ```
+	//!    std::shared_ptr<Material> material = engine->GetResources()->Load<Material>("../shaders/ModelShader");
+	//! ```
+	//! *An example of loading a shader*
 	void Material::Load(std::string _path)
 	{
 		_path += ".txt";

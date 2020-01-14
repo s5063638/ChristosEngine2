@@ -7,6 +7,12 @@
 
 namespace game_engine
 {
+	//! \brief
+	//! ```
+	//!    //Initialize engine
+	//!    std::shared_ptr<Engine> engine = Engine::Init();
+	//! ```
+	//! *An example of how to initialise the engine*
 	std::shared_ptr<Engine> Engine::Init()
 	{
 		std::shared_ptr<Engine> rtn = std::make_shared<Engine>();
@@ -42,6 +48,11 @@ namespace game_engine
 		return rtn;
 	}
 
+	//! \brief
+	//! ```
+	//!    std::shared_ptr<Entity> ent = engine->AddEntity();
+	//! ```
+	//! *An example of using AddEntity() to add a new Entity to the engine*
 	std::shared_ptr<Entity> Engine::AddEntity()
 	{
 		std::shared_ptr<Entity> newEntity = std::make_shared<Entity>();
@@ -55,11 +66,25 @@ namespace game_engine
 		return newEntity;
 	}
 
+	//! \brief
+	//! ```
+	//!    if (GetKeyboard()->GetKeyDown(SDLK_w))
+	//!    {
+	//!        //Move player forward
+	//!    }
+	//! ```
+	//! *An example of using GetKeyboard() to check for inputs*
 	std::shared_ptr<Keyboard> Engine::GetKeyboard()
 	{
 		return keyboard;
 	}
 
+	//! \brief
+	//! ```
+	//!    //Start the main loop
+	//!    engine->Start();
+	//! ```
+	//! *An example of how to start the engine*
 	void Engine::Start()
 	{
 		isRunning = true;

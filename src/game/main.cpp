@@ -6,8 +6,26 @@ using namespace game_engine;
 
 struct PlayerControl : public Component
 {
-	std::shared_ptr<Camera> camera;
+	///Used to store the game's Camera
+	//! \brief
+	//! ```
+	//!    std::shared_ptr<Entity> control = engine->AddEntity();
+	//!    std::shared_ptr<PlayerControl> pl = control->AddComponent<PlayerControl>();
+	//!    pl->camera = camera;
+	//! ```
+	//! *An example of how to set the camera in PlayerControl*
+	std::shared_ptr<Camera> camera; 
+	//std::shared_ptr<Entity> cat;
 
+	//! \brief Method used to handle player inputs
+	//! 
+	//! ```
+	//!     if (GetKeyboard()->GetKeyDown(SDLK_w))
+	//!     {
+	//!			camera->GetTransform()->Translate(rend::vec4(0.0f, 0.0f, -0.25f, 0.0f));
+	//!     }
+	//! ```
+	//! *Moves the camera forward*
 	void OnUpdate()
 	{
 		if (GetKeyboard()->GetKeyDown(SDLK_w))
@@ -45,6 +63,7 @@ struct PlayerControl : public Component
 	}
 };
 
+///Method used to create everything within game
 int main()
 {
 	//Initialize engine
@@ -107,8 +126,9 @@ int main()
 	std::shared_ptr<Entity> control = engine->AddEntity();
 	std::shared_ptr<PlayerControl> pl = control->AddComponent<PlayerControl>();
 	pl->camera = camera;
+	//pl->cat = cat1;
 
-	////Start the main loop
+	//Start the main loop
 	engine->Start();
 
 	return 0;

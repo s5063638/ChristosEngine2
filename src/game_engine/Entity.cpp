@@ -3,6 +3,13 @@
 
 namespace game_engine
 {
+	//! \brief
+	//! ```
+	//!    std::shared_ptr<Entity> ent = engine->AddEntity();
+	//!
+	//!    ent->GetEngine()->GetKeyboard();
+	//! ```
+	//! *An example of using GetEngine() to access the keyboard input*
 	std::shared_ptr<Engine> Entity::GetEngine()
 	{
 		return engine.lock();

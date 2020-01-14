@@ -2,14 +2,38 @@
 
 namespace game_engine
 {
+	//! \brief
+	//! ```
+	//!    if (GetKeyboard()->GetKeyUp(SDLK_w))
+	//!    {
+	//!        
+	//!    }
+	//! ```
+	//! *An example of checking if the W key has been released*
 	bool Keyboard::GetKeyUp(SDL_Keycode _keycode)
 	{
 		return true;
 	}
+	//! \brief
+	//! ```
+	//!    if (GetKeyboard()->GetKey(SDLK_w))
+	//!    {
+	//!        
+	//!    }
+	//! ```
+	//! *An example of checking if the W key has been pressed*
 	bool Keyboard::GetKey(SDL_Keycode _keycode)
 	{
 		return true;
 	}
+	//! \brief
+	//! ```
+	//!    if (GetKeyboard()->GetKeyDown(SDLK_w))
+	//!    {
+	//!        
+	//!    }
+	//! ```
+	//! *An example of checking if the W key has been down*
 	bool Keyboard::GetKeyDown(SDL_Keycode _keycode)
 	{
 		for (auto it = keys.begin(); it != keys.end(); it++)

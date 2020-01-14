@@ -9,6 +9,11 @@
 
 namespace game_engine
 {
+	//! \brief
+	//! ```
+	//!    std::shared_ptr<Texture> texture = engine->GetResources()->Load<Texture>("../textures/TextureName");
+	//! ```
+	//! *An example of loading a texture*
 	void Texture::Load(std::string _path)
 	{
 		_path += ".png";
