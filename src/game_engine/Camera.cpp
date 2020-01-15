@@ -10,7 +10,7 @@ namespace game_engine
 	}
 	rend::mat4 Camera::GetProjection()
 	{
-		rend::mat4 rtn = rend::perspective(rend::radians(45.0f), 1.0f, 0.01f, 100.0f);
+		rend::mat4 rtn = rend::perspective(rend::radians(45.0f), 1.0f, 0.01f, 500.0f);
 
 		return rtn;
 	}

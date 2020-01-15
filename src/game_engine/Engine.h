@@ -39,6 +39,7 @@ namespace game_engine
 			std::shared_ptr<rend::Context> GetContext(); /*!<Returns the drawing context */
 			std::shared_ptr<Resources> GetResources(); /*!< Returns the engine's resources*/
 			std::shared_ptr<Camera> GetCamera(); /*!< Returns the engine's main camera*/
+			std::vector<std::shared_ptr<Entity>> GetEntites(); /*!< Returns the vector of entities within the engine*/
 	};
 }
 

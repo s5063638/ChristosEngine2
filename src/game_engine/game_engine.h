@@ -13,5 +13,6 @@
 #include "Camera.h"
 #include "Texture.h"
 #include "Keyboard.h"
+#include "BoxCollider.h"
 
 #endif // !_GAME_ENGINE_H_

@@ -113,7 +113,7 @@ namespace game_engine
 				}
 			}
 
-			glClearColor(0.39f, 0.58f, 0.93f, 1.0f);
+			glClearColor(0.48f, 0.83f, 0.97f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			for (auto it = entities.begin(); it != entities.end(); it++)
@@ -149,5 +149,10 @@ namespace game_engine
 	void Engine::SetCam(std::shared_ptr<Camera> _cam)
 	{
 		camera = _cam;
+	}
+
+	std::vector<std::shared_ptr<Entity>> Engine::GetEntites()
+	{
+		return entities;
 	}
 }
