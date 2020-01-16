@@ -113,7 +113,7 @@ namespace game_engine
 				}
 			}
 
-			glClearColor(0.48f, 0.83f, 0.97f, 1.0f);
+			glClearColor(0.48f, 0.83f, 0.98f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 			for (auto it = entities.begin(); it != entities.end(); it++)

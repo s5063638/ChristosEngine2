@@ -69,6 +69,22 @@ int main()
 	//Initialize engine
 	std::shared_ptr<Engine> engine = Engine::Init();
 
+	//Camera Setup
+	std::shared_ptr<Entity> camEntity = engine->AddEntity();
+
+	std::shared_ptr<Camera> camera = camEntity->AddComponent<Camera>();
+	engine->SetCam(camera);
+
+	std::shared_ptr<BoxCollider> camBox = camEntity->AddComponent<BoxCollider>();
+	camBox->SetMoveable(true);
+
+	camera->GetTransform()->SetPosition(rend::vec3(0.0f, 0.0f, 0.0f));
+	camera->GetTransform()->SetRotation(rend::vec3(0.0f, 0.0f, 0.0f));
+
+	std::shared_ptr<Entity> control = engine->AddEntity();
+	std::shared_ptr<PlayerControl> pl = control->AddComponent<PlayerControl>();
+	pl->camera = camera;
+
 	//Create a single in-game object
 	std::shared_ptr<Entity> cat1 = engine->AddEntity();
 
@@ -104,23 +120,8 @@ int main()
 
 	cat2->GetComponent<Transform>()->SetPosition(rend::vec3(-1.5f, 0.0f, -10.0f));
 	cat2->GetComponent<Transform>()->SetRotation(rend::vec3(0.0f, -4.5f, 0.0f));
-	//cat2->GetComponent<Transform>()->SetScale(rend::vec3(30.0f, 30.0f, 30.0f));
 
-	//Add House
-	/*std::shared_ptr<Entity> graveyard = engine->AddEntity();
-
-	std::shared_ptr<Renderer> graveyardRenderer = graveyard->AddComponent<Renderer>();
-
-	std::shared_ptr<Mesh> graveyardMesh = engine->GetResources()->Load<Mesh>("../models/graveyard");
-	graveyardRenderer->SetMesh(graveyardMesh);
-	graveyardRenderer->SetMaterial(material);
-	std::shared_ptr<Texture> graveyardTexture = engine->GetResources()->Load<Texture>("../textures/graveyard");
-	graveyardRenderer->SetTexture(graveyardTexture);
-
-	graveyard->GetComponent<Transform>()->SetPosition(rend::vec3(0.0f, -2.5f, -1.0f));
-	graveyard->GetComponent<Transform>()->SetRotation(rend::vec3(0.0f, 0.0f, 0.0f));
-	graveyard->GetComponent<Transform>()->SetScale(rend::vec3(2.0f, 2.0f, 2.0f));*/
-
+	//Create the house
 	std::shared_ptr<Entity> cottage = engine->AddEntity();
 
 	std::shared_ptr<Renderer> cottageRenderer = cottage->AddComponent<Renderer>();
@@ -131,39 +132,30 @@ int main()
 	std::shared_ptr<Texture> cottageTexture = engine->GetResources()->Load<Texture>("../textures/CottageTexture");
 	cottageRenderer->SetTexture(cottageTexture);
 
+	std::shared_ptr<BoxCollider> houseCollider = cottage->AddComponent<BoxCollider>();
+	houseCollider->SetSize(rend::vec3(35.0f, 35.0f, 25.0f));
+
 	cottage->GetComponent<Transform>()->SetPosition(rend::vec3(5.0f, -4.5f, -40.0f));
 	cottage->GetComponent<Transform>()->SetRotation(rend::vec3(0.0f, 0.0f, 0.0f));
 	cottage->GetComponent<Transform>()->SetScale(rend::vec3(5.0f, 5.0f, 5.0f));
 
-	std::shared_ptr<Entity> mountain = engine->AddEntity();
+	//Create grass
+	std::shared_ptr<Entity> grass = engine->AddEntity();
 
-	std::shared_ptr<Renderer> mountainRenderer = mountain->AddComponent<Renderer>();
+	std::shared_ptr<Renderer> grassRenderer = grass->AddComponent<Renderer>();
 
-	std::shared_ptr<Mesh> mountainMesh = engine->GetResources()->Load<Mesh>("../models/garden");
-	mountainRenderer->SetMesh(mountainMesh);
-	mountainRenderer->SetMaterial(material);
-	std::shared_ptr<Texture> mountainTexture = engine->GetResources()->Load<Texture>("../textures/grass");
-	mountainRenderer->SetTexture(mountainTexture);
+	std::shared_ptr<Mesh> grassMesh = engine->GetResources()->Load<Mesh>("../models/garden");
+	grassRenderer->SetMesh(grassMesh);
+	grassRenderer->SetMaterial(material);
+	std::shared_ptr<Texture> grassTexture = engine->GetResources()->Load<Texture>("../textures/grass");
+	grassRenderer->SetTexture(grassTexture);
 
-	mountain->GetComponent<Transform>()->SetPosition(rend::vec3(-0.0f, -4.0f, -50.0f));
-	mountain->GetComponent<Transform>()->SetRotation(rend::vec3(-4.7f, 0.0f, 0.0f));
-	mountain->GetComponent<Transform>()->SetScale(rend::vec3(1.0f, 1.0f, 0.001f));
+	std::shared_ptr<BoxCollider> grassCollider = grass->AddComponent<BoxCollider>();
+	grassCollider->SetSize(rend::vec3(75.0f, 0.1f, 75.0f));
 
-	//Camera Setup
-	std::shared_ptr<Entity> camEntity = engine->AddEntity();
-
-	std::shared_ptr<Camera> camera = camEntity->AddComponent<Camera>();
-	engine->SetCam(camera);
-
-	std::shared_ptr<BoxCollider> camBox = camEntity->AddComponent<BoxCollider>();
-
-	camera->GetTransform()->SetPosition(rend::vec3(0.0f, 0.0f, 0.0f));
-	camera->GetTransform()->SetRotation(rend::vec3(0.0f, 0.0f, 0.0f));
-
-	std::shared_ptr<Entity> control = engine->AddEntity();
-	std::shared_ptr<PlayerControl> pl = control->AddComponent<PlayerControl>();
-	pl->camera = camera;
-	//pl->cat = cat1;
+	grass->GetComponent<Transform>()->SetPosition(rend::vec3(-0.0f, -4.0f, -50.0f));
+	grass->GetComponent<Transform>()->SetRotation(rend::vec3(-4.7f, 0.0f, 0.0f));
+	grass->GetComponent<Transform>()->SetScale(rend::vec3(1.0f, 1.0f, 0.001f));
 
 	//Start the main loop
 	engine->Start();

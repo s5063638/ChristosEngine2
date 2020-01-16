@@ -8,6 +8,7 @@ namespace game_engine
 	void BoxCollider::OnInit()
 	{
 		size = rend::vec3(1.0f, 1.0f, 1.0f);
+		moveable = false;
 	}
 	bool BoxCollider::IsColliding(rend::vec3 _position, rend::vec3 _size)
 	{
@@ -97,10 +98,22 @@ namespace game_engine
 	{
 		Collide();
 	}
+	//! \brief
+	//! ```
+	//!    std::shared_ptr<BoxCollider> collider = entity->AddComponent<BoxCollider>();
+	//!    collider->SetSize(rend::vec3(5.0f, 5.0f, 5.0f));
+	//! ```
+	//! *An example of how to set the size of a BoxCollider*
 	void BoxCollider::SetSize(rend::vec3 _size)
 	{
 		size = _size;
 	}
+	//! \brief
+	//! ```
+	//!    std::shared_ptr<BoxCollider> collider = entity->AddComponent<BoxCollider>();
+	//!    collider->SetOffset(rend::vec3(2.0f, 1.0f, 1.0f));
+	//! ```
+	//! *An example of how to set the offset of a BoxCollider*
 	void BoxCollider::SetOffset(rend::vec3 _offset)
 	{
 		offset = _offset;
@@ -129,12 +142,25 @@ namespace game_engine
 
 			std::shared_ptr<BoxCollider> box = (*it)->GetComponent<BoxCollider>();
 
-			rend::vec3 sp = box->GetCollisionResponse(np, size);
-			np = sp;
-			np -= offset;
+			if (moveable == true)
+			{
+				rend::vec3 sp = box->GetCollisionResponse(np, size);
+				np = sp;
+				np -= offset;
 
-			GetTransform()->SetPosition(np);
-			lastPos = np;
+				GetTransform()->SetPosition(np);
+				lastPos = np;
+			}
 		}
+	}
+	//! \brief
+	//! ```
+	//!    std::shared_ptr<BoxCollider> collider = entity->AddComponent<BoxCollider>();
+	//!    collider->SetMoveable(true);
+	//! ```
+	//! *An example of how to make the BoxCollider moveable*
+	void BoxCollider::SetMoveable(bool _move)
+	{
+		moveable = _move;
 	}
 }
